@@ -1,0 +1,16 @@
+{
+  "name": "deepanshu_bd6.1---hw2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.0",
+    "jest": "^29.7.0"
+  }
+}
