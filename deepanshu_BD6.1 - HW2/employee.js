@@ -3,24 +3,23 @@ const employees = [
     { id: 2, name: "Jane Smith", position: "Product Manager" },
     { id: 3, name: "Sam Johnson", position: "Designer" },
     { id: 4, name: "Lisa Brown", position: "DevOps Engineer" },
-  ];
-  
-  function getAllEmployees() {
+];
+
+function getAllEmployees() {
     return employees;
-  }
-  
-  function getEmployeeById(id) {
+}
+
+function getEmployeeById(id) {
     return employees.find((employee) => employee.id === id);
-  }
-  
-  function addNewEmployee(newEmployee) {
+}
+
+function addNewEmployee(newEmployee) {
     employees.push(newEmployee);
     return newEmployee;
-  }
-  
-  module.exports = {
+}
+
+module.exports = {
     getAllEmployees,
     getEmployeeById,
     addNewEmployee,
-  };
-  
+};
