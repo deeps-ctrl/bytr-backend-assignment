@@ -7,10 +7,10 @@ const games = [];
 const tournaments = [];
 
 function validateGame(game) {
-    if (!game.title && typeof game.title !== "string") {
+    if (!game.title || typeof game.title !== "string") {
         return "Title is required and should be in string";
     }
-    if (!game.genre && typeof game.genre !== "string") {
+    if (!game.genre || typeof game.genre !== "string") {
         return "Genre is required and should be in string";
     }
     return null;
@@ -25,10 +25,10 @@ app.post("/api/games", (req, res) => {
 });
 
 function validateTournament(tournament){
-    if(!tournament.name && typeof tournament.name !== "string"){
+    if(!tournament.name || typeof tournament.name !== "string"){
         return "Name is required and should be in string";
     }
-    if(!tournament.gameId && typeof tournament.gameId !== "string"){
+    if(!tournament.gameId || typeof tournament.gameId !== "string"){
         return "Game Id is required and should be in string";
     }
     return null;

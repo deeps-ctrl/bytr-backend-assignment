@@ -7,10 +7,10 @@ const employees = [];
 const companies = [];
 
 function validateEmployee(employee) {
-    if (!employee.name && typeof employee.name !== "string") {
+    if (!employee.name || typeof employee.name !== "string") {
         return "Employee name is required and should be a string";
     }
-    if (!employee.companyId && typeof employee.companyId !== "number") {
+    if (!employee.companyId || typeof employee.companyId !== "number") {
         return "Company Id is required and should be a number";
     }
     return null;
@@ -25,7 +25,7 @@ app.post("/api/employees", (req, res) => {
 });
 
 function validateCompany(company) {
-    if (!company.name && typeof company.name !== "string") {
+    if (!company.name || typeof company.name !== "string") {
         return "Company name is required and should be a string";
     }
     return null;
