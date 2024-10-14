@@ -7,27 +7,39 @@ const { getAllShows, getShowById, addShow } = require('./controllers')
 const { validateShow } = require('./validation')
 
 app.get('/shows', (req, res) => {
-    const shows = getAllShows()
-    res.status(200).json({ shows })
+    try {
+        const shows = getAllShows()
+        res.status(200).json({ shows })
+    } catch (error) {
+        res.status(500).json({ message: `Error ${error.message}` })
+    }
 })
 
 app.get('/shows/:id', (req, res) => {
-    const id = Number(req.params.id)
-    const show = getShowById(id)
-    if (!show) {
-        return res.status(404).json({ message: 'Invalid ID' })
+    try {
+        const id = Number(req.params.id)
+        const show = getShowById(id)
+        if (!show) {
+            return res.status(404).json({ message: 'Invalid ID' })
+        }
+        res.status(200).json({ show })
+    } catch (error) {
+        res.status(500).json({ message: `Error ${error.message}` })
     }
-    res.status(200).json({ show })
 })
 
 app.post('/shows', async (req, res) => {
-    const show = req.body
-    const error = validateShow(show)
-    if (error) {
-        return res.status(400).send(error)
+    try {
+        const show = req.body
+        const error = validateShow(show)
+        if (error) {
+            return res.status(400).send(error)
+        }
+        const updateShow = await addShow(show)
+        res.status(201).json(updateShow)
+    } catch (error) {
+        res.status(500).json({ message: `Error ${error.message}` })
     }
-    const updateShow = await addShow(show)
-    res.status(201).json(updateShow)
 })
 
 module.exports = { app }
